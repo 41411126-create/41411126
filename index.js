@@ -210,6 +210,8 @@
       });
       stopTouchAndScrollEventPropagation(speechButtonElement);
 
+      speechBubbleElement.classList.add('visible');
+
       modelContainerElement.appendChild(modelElement);
       modelContainerElement.appendChild(speechBubbleElement);
       modelContainerElement.appendChild(speechButtonElement);
