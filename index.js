@@ -109,8 +109,8 @@
       var modelElement = document.createElement('model-viewer');
       finalModelElement = modelElement;
       modelElement.classList.add('panorama-model');
-      modelElement.setAttribute('src', '41411107_1030.glb?v=20261030-1143');
-      modelElement.setAttribute('alt', '41411107_1030 3D 模型');
+      modelElement.setAttribute('src', '41411126.glb?v=20261127');
+      modelElement.setAttribute('alt', '41411126 3D 模型');
       modelElement.setAttribute('camera-controls', '');
       modelElement.setAttribute('autoplay', '');
       modelElement.setAttribute('camera-orbit', '0deg 75deg 12m');
