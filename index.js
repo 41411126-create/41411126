@@ -178,7 +178,41 @@
         event.stopPropagation();
       });
       stopTouchAndScrollEventPropagation(modelToggleButtonElement);
+      var speechBubbleElement = document.createElement('div');
+      speechBubbleElement.classList.add('panorama-model-speech');
+      speechBubbleElement.setAttribute('role', 'status');
+      speechBubbleElement.setAttribute('aria-live', 'polite');
+      speechBubbleElement.textContent = '歡迎來到跨海大橋！讓我們一起欣賞美麗的海景吧！';
+
+      var speechButtonElement = document.createElement('button');
+      speechButtonElement.type = 'button';
+      speechButtonElement.classList.add('panorama-model-speech-button');
+      speechButtonElement.textContent = '人物說話';
+      speechButtonElement.setAttribute('aria-label', '讓人物說話');
+      speechButtonElement.addEventListener('click', function(event) {
+        event.stopPropagation();
+        var speechText = '歡迎來到跨海大橋！讓我們一起欣賞美麗的海景吧！';
+
+        speechBubbleElement.classList.add('visible');
+        if ('speechSynthesis' in window) {
+          window.speechSynthesis.cancel();
+          var utterance = new SpeechSynthesisUtterance(speechText);
+          utterance.lang = 'zh-TW';
+          utterance.rate = 0.95;
+          window.speechSynthesis.speak(utterance);
+        }
+      });
+      speechButtonElement.addEventListener('pointerdown', function(event) {
+        event.stopPropagation();
+      });
+      speechButtonElement.addEventListener('mousedown', function(event) {
+        event.stopPropagation();
+      });
+      stopTouchAndScrollEventPropagation(speechButtonElement);
+
       modelContainerElement.appendChild(modelElement);
+      modelContainerElement.appendChild(speechBubbleElement);
+      modelContainerElement.appendChild(speechButtonElement);
       modelContainerElement.appendChild(modelToggleButtonElement);
       scene.hotspotContainer().createHotspot(
         modelContainerElement,
